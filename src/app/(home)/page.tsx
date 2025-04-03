@@ -1,12 +1,25 @@
-import { trpc } from "@/trpc/server";
+import { HomeView } from "@/modules/home/ui/views/home-view";
+import { trpc, HydrateClient } from "@/trpc/server";
 
-export default async function Home() {
+export const dynamic = 'force-dynamic';
 
-  const data = await trpc.hello({ text: "Akash" });
+interface PageProps {
+  searchParams: Promise<{
+    categoryId?: string
+  }>
+};
+
+const Page = async({ searchParams }: PageProps) => {
+
+  const { categoryId } = await searchParams;
+
+  void trpc.categories.getMany.prefetch();
 
  return (
-  <div>
-    Client component says: {data.greeting}
-  </div>
+  <HydrateClient>
+    <HomeView categoryId={categoryId} />
+  </HydrateClient>
  )
 }
+
+export default Page;
