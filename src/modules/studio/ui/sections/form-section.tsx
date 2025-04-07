@@ -10,7 +10,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { CopyCheckIcon, CopyIcon, Globe2Icon, ImagePlayIcon, LockIcon, MoreVerticalIcon, RotateCcwIcon, SparklesIcon, TrashIcon } from "lucide-react";
+import { CopyCheckIcon, CopyIcon, Globe2Icon, ImagePlayIcon, LockIcon, MoreVerticalIcon, RotateCcwIcon, TrashIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
@@ -235,10 +235,10 @@ const FormSectionSuspense = ({videoId}: FormSectionProps) => {
                                                         <ImagePlayIcon className="size4 mr-1"/>
                                                         Change
                                                     </DropdownMenuItem>
-                                                    <DropdownMenuItem>
+                                                    {/* <DropdownMenuItem>
                                                         <SparklesIcon className="size4 mr-1"/>
                                                         AI-generated
-                                                    </DropdownMenuItem>
+                                                    </DropdownMenuItem> */}
                                                     <DropdownMenuItem onClick={()=> restoreThumbnail.mutate({id: videoId})}>
                                                         <RotateCcwIcon className="size4 mr-1"/>
                                                         Restore
